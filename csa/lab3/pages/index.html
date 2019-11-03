@@ -1,0 +1,44 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Главная</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+  <div class="header">
+    <a href="/">Главная</a>
+    <a href="/about">О себе</a>
+    <a href="/table">Таблица</a>
+  </div>
+  <div class="content">
+    <div>Result: <span id="res"></span></div>
+    <form id="form">
+      <input id="words" placeholder="Введите слова через запятую" />
+      <button type="submit">Подсчитать</button>
+    </form>
+  </div>
+  <div class="footer">&copy; Ivan Bugaev</div>
+
+  <script>
+    document.querySelector('#form').addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      var words = document.querySelector('#words').value;
+      var result = document.querySelector('#res');
+
+      fetch(`/api/count`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ words: words }),
+      })
+        .then((response) => response.json())
+        .then((data) => result.innerHTML = data.result);
+
+      return false;
+    });
+  </script>
+</body>
+</html>
