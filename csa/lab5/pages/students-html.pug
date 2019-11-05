@@ -3,8 +3,8 @@ each student in students
         td= student.id
         td= student.name
         td= student.city
-        td= student.birthday
+        td= student.course
         td
-            button(type='button' onclick=`loadEditStudent("${student.id}", "${student.name}", "${student.city}", "${student.birthday}");`) ред.
+            button(type='button' onclick=`loadEditStudent("${student.id}", "${student.name}", "${student.city}", "${student.course}");`) ред.
         td
             button(type='button' onclick=`removeStudent("${student.id}");`) удал.
