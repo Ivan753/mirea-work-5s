@@ -7,6 +7,7 @@
 #define COMMA 5
 #define SPACE 6
 #define IDENTITY 7
+#define UNKNOWN 8
 %}
 id [a-zA-Z_][a-zA-Z0-9_]*
 %%
@@ -16,12 +17,13 @@ id [a-zA-Z_][a-zA-Z0-9_]*
 ")" { return RBRACKET; }
 "," { return COMMA; }
 " " { return SPACE; }
-id { return IDENTITY; }
+{id} { return IDENTITY; }
+. {printf("\nНеизвестный символ [%c] !\n",yytext[0]); return UNKNOWN; }
 %%
 int main(int argc, char **argv) {
   // ищем файл
   if(argc < 2) {
-    printf("\Недостаточно аргументов. Пожалуйста, укажите входной файл.\n");
+    printf("\nНедостаточно аргументов. Пожалуйста, укажите входной файл.\n");
     return -1;
   }
   // пробуем открыть файл
@@ -42,7 +44,7 @@ int main(int argc, char **argv) {
     int token = yylex();
     if (token == 0)
       break;
-    printf("%d\n", token);
+    printf("%d ", token);
   }
   fclose(yyin);
   return 0;

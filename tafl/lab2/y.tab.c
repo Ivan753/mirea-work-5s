@@ -1242,43 +1242,43 @@ yyreduce:
     {
   case 2:
 #line 15 "my.y"
-    { printf("\nprogram\n"); }
+    { printf("\nПрограмма\n"); }
 #line 1247 "y.tab.c"
     break;
 
   case 3:
 #line 16 "my.y"
-    { printf("\nprogram\n"); }
+    { printf("\nПрограмма\n"); }
 #line 1253 "y.tab.c"
     break;
 
   case 4:
 #line 19 "my.y"
-    { printf("\nфункция\n"); }
+    { printf("\nФункция\n"); }
 #line 1259 "y.tab.c"
     break;
 
   case 5:
 #line 21 "my.y"
-    { printf("\nвысказывание\n"); }
+    { printf("\nВысказывание\n"); }
 #line 1265 "y.tab.c"
     break;
 
   case 6:
 #line 22 "my.y"
-    { printf("\nфункций в statement\n"); }
+    { printf("\nВысказывание\n"); }
 #line 1271 "y.tab.c"
     break;
 
   case 7:
 #line 24 "my.y"
-    { printf("\nприсвоение\n"); }
+    { printf("\nПрисваивание\n"); }
 #line 1277 "y.tab.c"
     break;
 
   case 9:
 #line 27 "my.y"
-    { printf("\nвыражение\n"); }
+    { printf("\nВыражение\n"); }
 #line 1283 "y.tab.c"
     break;
 
@@ -1531,11 +1531,11 @@ void yyerror(char *errmsg) {
 
 int main(int argc, char **argv) {
   if(argc < 2) {
-    printf("\nNot enough arguments. Please specify filename. \n");
+    printf("\nНедостаточно аргументов. Пожалуйста, введите имя файла. \n");
     return -1;
   }
   if((yyin = fopen(argv[1], "r")) == NULL) {
-    printf("\nCannot open file %s.\n", argv[1]);
+    printf("\nНе удалось открыть файл %s.\n", argv[1]);
     return -1;
   }
   yylineno = 1;

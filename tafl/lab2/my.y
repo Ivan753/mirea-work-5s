@@ -12,19 +12,19 @@
 %left CMP
 %%
   program:
-    statement { printf("\nprogram\n"); }
-    | program statement { printf("\nprogram\n"); }
+    statement { printf("\nПрограмма\n"); }
+    | program statement { printf("\nПрограмма\n"); }
   function:
     TYPE SPACE FUNCTION LBRACKET TYPE SPACE IDENTITY COMMA SPACE TYPE SPACE IDENTITY RBRACKET
-    { printf("\nфункция\n"); }
+    { printf("\nФункция\n"); }
   statement:
-    expr { printf("\nвысказывание\n"); }
-    | function { printf("\nфункций в statement\n"); }
+    expr { printf("\nВысказывание\n"); }
+    | function { printf("\nВысказывание\n"); }
   expr:
-    IDENTITY ASSIGN expr_cmp { printf("\nприсвоение\n"); }
+    IDENTITY ASSIGN expr_cmp { printf("\nПрисваивание\n"); }
   expr_cmp:
     prim_expr PLUS prim_expr
-    | prim_expr { printf("\nвыражение\n"); }
+    | prim_expr { printf("\nВыражение\n"); }
   prim_expr:
     IDENTITY
     | NUMBER
@@ -39,11 +39,11 @@ void yyerror(char *errmsg) {
 
 int main(int argc, char **argv) {
   if(argc < 2) {
-    printf("\nNot enough arguments. Please specify filename. \n");
+    printf("\nНедостаточно аргументов. Пожалуйста, введите имя файла. \n");
     return -1;
   }
   if((yyin = fopen(argv[1], "r")) == NULL) {
-    printf("\nCannot open file %s.\n", argv[1]);
+    printf("\nНе удалось открыть файл %s.\n", argv[1]);
     return -1;
   }
   yylineno = 1;
